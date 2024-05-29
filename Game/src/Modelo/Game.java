@@ -2,66 +2,37 @@ package Modelo;
 import java.util.Random;
 
 public class Game {
+    private int puntosUsuario;
+    private int puntosMaquina;
 
-    //Variables a usar
-    byte puntaje_player;
-    byte puntaje_CPU;
-    byte eleccion_player;
-    byte eleccion_CPU;
-
-    //limite superior e inferior de los numeros random
-    int min = 0;
-    int max = 2;
-
-    //Constructor
-    public Game(byte puntaje_player, byte puntaje_CPU, byte eleccion_player, byte eleccion_CPU) {
-        this.puntaje_player = puntaje_player;
-        this.puntaje_CPU = puntaje_CPU;
-        this.eleccion_player = eleccion_player;
-        this.eleccion_CPU = eleccion_CPU;
+    public Game() {
+        puntosUsuario = 0;
+        puntosMaquina = 0;
     }
 
-    public Game(){
-        
+    public Opciones generarOpcionMaquina() {
+        Random rand = new Random();
+        int numeroAleatorio = rand.nextInt(3);
+        return Opciones.values()[numeroAleatorio];
     }
 
-    //METODOS GET AND SET
-
-    public byte getPuntaje_player() {
-        return puntaje_player;
+    public void actualizarPuntuacion(Opciones opcionUsuario, Opciones opcionMaquina) {
+        if (opcionUsuario.equals(opcionMaquina)) {
+            // Empate, no se suman puntos
+        } else if ((opcionUsuario.equals(Opciones.PIEDRA) && opcionMaquina.equals(Opciones.TIJERA))
+                || (opcionUsuario.equals(Opciones.PAPEL) && opcionMaquina.equals(Opciones.PIEDRA))
+                || (opcionUsuario.equals(Opciones.TIJERA) && opcionMaquina.equals(Opciones.PAPEL))) {
+            puntosUsuario++;
+        } else {
+            puntosMaquina++;
+        }
     }
 
-    public void setPuntaje_player(byte puntaje_player) {
-        this.puntaje_player = puntaje_player;
+    public int getPuntosUsuario() {
+        return puntosUsuario;
     }
 
-    public byte getPuntaje_CPU() {
-        
-        return puntaje_CPU;
+    public int getPuntosMaquina() {
+        return puntosMaquina;
     }
-    public void setPuntaje_CPU(byte puntaje_CPU) {
-        this.puntaje_CPU = puntaje_CPU;
-    }
-
-    public byte getEleccion_player() {
-        return eleccion_player;
-    }
-
-    public void setEleccion_player(byte eleccion_player) {
-        this.eleccion_player = eleccion_player;
-    }
-
-    public byte getEleccion_CPU() {
-        return eleccion_CPU;
-    }
-
-    public void setEleccion_CPU() {
-        Random random = new Random();
-        int numeroAleatorio = random.nextInt((max - min) + 1) + min;
-        this.eleccion_CPU = (byte)numeroAleatorio;
-    }
-
-
-    
-    
 }

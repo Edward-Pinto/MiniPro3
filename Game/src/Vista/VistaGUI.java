@@ -13,7 +13,7 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.Image;
 
-import Controlador.ControladorGame;
+import Modelo.Opciones;
 
 public class VistaGUI extends JFrame implements Vista{
 
@@ -83,35 +83,36 @@ public class VistaGUI extends JFrame implements Vista{
 
     }
 
-
     @Override
-    public void mostrarVista(ControladorGame controlador) {
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarVista'");
+    public void mostrarOpcionUsuario(Opciones opcion) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mostrarOpcionUsuario'");
     }
 
     @Override
-    public int opc_player() {
-        throw new UnsupportedOperationException("Unimplemented method 'opc_player'");
+    public void mostrarOpcionMaquina(Opciones opcion) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mostrarOpcionMaquina'");
+    }
+
+
+    @Override
+    public void mostrarResultado(String resultado) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mostrarResultado'");
+    }
+
+
+    @Override
+    public void mostrarPuntuacion(int puntosUsuario, int puntosMaquina) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mostrarPuntuacion'");
     }
 
     @Override
-    public int opc_CPU() {
-        throw new UnsupportedOperationException("Unimplemented method 'opc_CPU'");
-    }
-
-    @Override
-    public int setpuntaje() {
-        throw new UnsupportedOperationException("Unimplemented method 'setpuntaje'");
-    }
-
-    @Override
-    public String win() {
-        throw new UnsupportedOperationException("Unimplemented method 'win'");
-    }
-
-    @Override
-    public void resetGame() {
-        throw new UnsupportedOperationException("Unimplemented method 'resetGame'");
+    public Opciones obtenerOpcionUsuario() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'obtenerOpcionUsuario'");
     }
     
 }
