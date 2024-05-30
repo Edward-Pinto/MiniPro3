@@ -1,9 +1,9 @@
-package vista;
+package vista_;
 
 import java.util.Scanner;
 
-import controlador.Controlador;
-import modelo.Opciones;
+import controlador_.Controlador;
+import modelo_.Opciones;
 
 public class VistaTerminal implements Vista {
     public Scanner scanner;

@@ -1,14 +1,14 @@
-package controlador;
-
-import vista.Vista;
-import vista.VistaGUI;
-import modelo.Game;
-import modelo.Opciones;
+package controlador_;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import modelo_.Game;
+import modelo_.Opciones;
+import vista_.Vista;
+import vista_.VistaGUI;
 
 public class Controlador implements MouseListener, ActionListener{
     private Game modelo;

@@ -1,4 +1,4 @@
-package vista;
+package vista_;
 
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
@@ -10,25 +10,25 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
+import controlador_.Controlador;
+import modelo_.Opciones;
 
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.Image;
-import controlador.Controlador;
-import modelo.Opciones;
 
 public class VistaGUI extends JFrame implements Vista{
 
     Container contenedor;
     GridLayout layoutPrincipal, layoutTop, layoutBottom;
     JPanel topPanel, bottomPanel, top1, top2, bottom1, bottom2, bottom3;
-    public static Icon piedraIcon = new ImageIcon(new ImageIcon("Game/src/Vista/options/Piedra.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
-    public static Icon papelIcon = new ImageIcon(new ImageIcon("Game/src/Vista/options/Papel.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
-    public static Icon tijerasIcon =new ImageIcon(new ImageIcon("Game/src/Vista/options/Tijeras.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
-    Icon piedraRivalIcon = new ImageIcon(new ImageIcon("Game/src/vista/options/PiedraRival.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
-    Icon papelRivalIcon = new ImageIcon(new ImageIcon("Game/src/vista/options/PapelRival.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
-    Icon tijerasRivalIcon = new ImageIcon(new ImageIcon("Game/src/vista/options/TijerasRival.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+    public static Icon piedraIcon = new ImageIcon(new ImageIcon("Game/src/Vista_/options/Piedra.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+    public static Icon papelIcon = new ImageIcon(new ImageIcon("Game/src/Vista_/options/Papel.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+    public static Icon tijerasIcon =new ImageIcon(new ImageIcon("Game/src/Vista_/options/Tijeras.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+    Icon piedraRivalIcon = new ImageIcon(new ImageIcon("Game/src/vista_/options/PiedraRival.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+    Icon papelRivalIcon = new ImageIcon(new ImageIcon("Game/src/vista_/options/PapelRival.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+    Icon tijerasRivalIcon = new ImageIcon(new ImageIcon("Game/src/vista_/options/TijerasRival.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
 
 
     public static JLabel piedra = new JLabel(piedraIcon);
