@@ -1,5 +1,6 @@
 package vista;
 
+import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -22,16 +23,21 @@ public class VistaGUI extends JFrame implements Vista{
     Container contenedor;
     GridLayout layoutPrincipal, layoutTop, layoutBottom;
     JPanel topPanel, bottomPanel, top1, top2, bottom1, bottom2, bottom3;
-    public static Icon piedraIcon = new ImageIcon(new ImageIcon("src/Vista/options/Piedra.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
-    public static Icon papelIcon = new ImageIcon(new ImageIcon("src/Vista/options/Papel.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
-    public static Icon tijerasIcon =new ImageIcon(new ImageIcon("src/Vista/options/Tijeras.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
-    
+    public static Icon piedraIcon = new ImageIcon(new ImageIcon("Game/src/Vista/options/Piedra.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+    public static Icon papelIcon = new ImageIcon(new ImageIcon("Game/src/Vista/options/Papel.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+    public static Icon tijerasIcon =new ImageIcon(new ImageIcon("Game/src/Vista/options/Tijeras.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+    Icon piedraRivalIcon = new ImageIcon(new ImageIcon("Game/src/vista/options/PiedraRival.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+    Icon papelRivalIcon = new ImageIcon(new ImageIcon("Game/src/vista/options/PapelRival.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+    Icon tijerasRivalIcon = new ImageIcon(new ImageIcon("Game/src/vista/options/TijerasRival.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+
+
     public static JLabel piedra = new JLabel(piedraIcon);
     public static JLabel papel = new JLabel(papelIcon);
     public static JLabel tijeras = new JLabel(tijerasIcon);
     public static Opciones opciongui;
-
+    JLabel ladousuario = new JLabel("Usuario:");
     JLabel usuario = new JLabel();
+    JLabel ladomaquina = new JLabel("Botsito:");
     JLabel maquina = new JLabel();
 
     public VistaGUI(){
@@ -50,8 +56,12 @@ public class VistaGUI extends JFrame implements Vista{
         layoutBottom = new GridLayout(1,3);
         bottomPanel.setLayout(layoutBottom);
 
+
         top1 = new JPanel();
         top2 = new JPanel();
+        top1.setLayout(new BoxLayout(top1, BoxLayout.Y_AXIS));
+        top2.setLayout(new BoxLayout(top2, BoxLayout.Y_AXIS));
+
         bottom1 = new JPanel();
         bottom2 = new JPanel();
         bottom3 = new JPanel();
@@ -69,7 +79,8 @@ public class VistaGUI extends JFrame implements Vista{
         bottom2.setBorder(lineBorder);
         bottom3.setBorder(lineBorder);
 
-
+        top1.add(ladousuario);
+        top2.add(ladomaquina);
         top1.add(usuario);
         top2.add(maquina);
         bottom1.add(piedra);
@@ -93,6 +104,7 @@ public class VistaGUI extends JFrame implements Vista{
         setSize(700,500);
         setTitle("ULTIMATE PIEDRA, PAPEL ,TIJERA");
         setResizable(false);
+        setLocationRelativeTo(null);
 
     }
 
@@ -110,11 +122,11 @@ public class VistaGUI extends JFrame implements Vista{
     @Override
     public void mostrarOpcionMaquina(Opciones opcion) {        
         if(opcion == Opciones.PIEDRA){
-            maquina.setIcon(piedraIcon);
+            maquina.setIcon(piedraRivalIcon);
     }else if(opcion == Opciones.PAPEL){
-        maquina.setIcon(papelIcon);
+        maquina.setIcon(papelRivalIcon);
     }else if(opcion == Opciones.TIJERA){
-        maquina.setIcon(tijerasIcon);
+        maquina.setIcon(tijerasRivalIcon);
     }
     }
 
@@ -124,7 +136,7 @@ public class VistaGUI extends JFrame implements Vista{
 
     @Override
     public void mostrarPuntuacion(int puntosUsuario, int puntosMaquina) {
-        JOptionPane.showMessageDialog(null, "Puntuación: Usuario: " + puntosUsuario + " - Máquina: " + puntosMaquina, "resultado", 1);
+        JOptionPane.showMessageDialog(contenedor, "Puntuación: Usuario: " + puntosUsuario + " - Máquina: " + puntosMaquina, "resultado", 1);
     }
 
     @Override
