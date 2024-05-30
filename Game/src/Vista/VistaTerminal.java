@@ -1,8 +1,9 @@
-package Vista;
+package vista;
 
 import java.util.Scanner;
 
-import Modelo.Opciones;
+import controlador.Controlador;
+import modelo.Opciones;
 
 public class VistaTerminal implements Vista {
     public Scanner scanner;
@@ -21,10 +22,7 @@ public class VistaTerminal implements Vista {
         System.out.println("La máquina ha elegido: " + opcion);
     }
 
-    @Override
-    public void mostrarResultado(String resultado) {
-        System.out.println(resultado);
-    }
+
 
     @Override
     public void mostrarPuntuacion(int puntosUsuario, int puntosMaquina) {
@@ -40,5 +38,18 @@ public class VistaTerminal implements Vista {
             System.out.println("Opción inválida, escribe la palabra");
             return obtenerOpcionUsuario();
         }
+    }
+
+    @Override
+    public void mostrarVista(Controlador controlador) {
+        System.out.println("BIENVENIDO A ULTIMATE PIEDRA PAPEL TIJERAS");
+        boolean seguirJugando = true;
+        while (seguirJugando) {
+            controlador.actionPerformed(null);
+            System.out.println("¿Quieres jugar de nuevo? (s/n)");
+            String respuesta = scanner.nextLine().toLowerCase();
+            seguirJugando = respuesta.equals("s");
+        }
+
     }
 }
