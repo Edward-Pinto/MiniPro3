@@ -1,16 +1,26 @@
-package Controlador;
+package controlador;
 
-import Modelo.Game;
-import Modelo.Opciones;
-import Vista.Vista;
+import vista.Vista;
+import vista.VistaGUI;
+import modelo.Game;
+import modelo.Opciones;
 
-public class Controlador {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class Controlador implements MouseListener, ActionListener{
     private Game modelo;
     private Vista vista;
 
     public Controlador(Game modelo, Vista vista) {
         this.modelo = modelo;
         this.vista = vista;
+    }
+
+    public void mostrarInterfaz(){
+        vista.mostrarVista(this);
     }
 
     public void jugar() {
@@ -26,5 +36,40 @@ public class Controlador {
         int puntosMaquina = modelo.getPuntosMaquina();
 
         vista.mostrarPuntuacion(puntosUsuario, puntosMaquina);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if(e.getSource() != null){
+        if (e.getSource() == VistaGUI.piedra){
+            VistaGUI.opciongui = Opciones.PIEDRA;
+        }else if (e.getSource() == VistaGUI.papel){
+            VistaGUI.opciongui = Opciones.PAPEL;
+        }else if (e.getSource() == VistaGUI.tijeras){
+            VistaGUI.opciongui = Opciones.TIJERA;
+        }
+        jugar();
+    }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        jugar();
     }
 }

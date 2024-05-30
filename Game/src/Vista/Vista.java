@@ -1,11 +1,12 @@
-package Vista;
+package vista;
 
-import Modelo.Opciones;
+import modelo.Opciones;
+import controlador.Controlador;
 
 public interface Vista {
+    void mostrarVista(Controlador controlador);
     void mostrarOpcionUsuario(Opciones opcion);
     void mostrarOpcionMaquina(Opciones opcion);
-    void mostrarResultado(String resultado);
     void mostrarPuntuacion(int puntosUsuario, int puntosMaquina);
     Opciones obtenerOpcionUsuario();
 }

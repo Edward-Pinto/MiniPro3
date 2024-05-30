@@ -1,18 +1,14 @@
-import Controlador.Controlador;
-import Modelo.Game;
-import Vista.VistaTerminal;
+import controlador.Controlador;
+import modelo.Game;
+import vista.VistaGUI;
+import vista.VistaTerminal;
 public class Main {
     public static void main(String[] args) {
         Game modelo = new Game();
+        VistaGUI gui = new VistaGUI();
         VistaTerminal vista = new VistaTerminal();
-        Controlador controlador = new Controlador(modelo, vista);
+        Controlador controlador = new Controlador(modelo, gui);
+        controlador.mostrarInterfaz();
 
-        boolean seguirJugando = true;
-        while (seguirJugando) {
-            controlador.jugar();
-            System.out.println("¿Quieres jugar de nuevo? (s/n)");
-            String respuesta = vista.scanner.nextLine().toLowerCase();
-            seguirJugando = respuesta.equals("s");
-        }
     }
 }

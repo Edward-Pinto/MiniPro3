@@ -1,8 +1,10 @@
-package Vista;
+package vista;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -12,14 +14,25 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.Image;
-
-import Modelo.Opciones;
+import controlador.Controlador;
+import modelo.Opciones;
 
 public class VistaGUI extends JFrame implements Vista{
 
     Container contenedor;
     GridLayout layoutPrincipal, layoutTop, layoutBottom;
     JPanel topPanel, bottomPanel, top1, top2, bottom1, bottom2, bottom3;
+    public static Icon piedraIcon = new ImageIcon(new ImageIcon("src/Vista/options/Piedra.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+    public static Icon papelIcon = new ImageIcon(new ImageIcon("src/Vista/options/Papel.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+    public static Icon tijerasIcon =new ImageIcon(new ImageIcon("src/Vista/options/Tijeras.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+    
+    public static JLabel piedra = new JLabel(piedraIcon);
+    public static JLabel papel = new JLabel(papelIcon);
+    public static JLabel tijeras = new JLabel(tijerasIcon);
+    public static Opciones opciongui;
+
+    JLabel usuario = new JLabel();
+    JLabel maquina = new JLabel();
 
     public VistaGUI(){
         contenedor = getContentPane();
@@ -27,10 +40,8 @@ public class VistaGUI extends JFrame implements Vista{
         contenedor.setLayout(layoutPrincipal);
         Border lineBorder = new LineBorder(Color.BLACK, 2);
 
-        JLabel piedra = new JLabel(new ImageIcon(new ImageIcon("src/Vista/Opciones/Piedra.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH)));
-        JLabel papel = new JLabel(new ImageIcon(new ImageIcon("src/Vista/Opciones/Papel.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH)));
-        JLabel tijeras = new JLabel(new ImageIcon(new ImageIcon("src/Vista/Opciones/Tijeras.png").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH)));
-
+        
+        
 
         topPanel = new JPanel();
         layoutTop = new GridLayout(1,2);
@@ -58,6 +69,9 @@ public class VistaGUI extends JFrame implements Vista{
         bottom2.setBorder(lineBorder);
         bottom3.setBorder(lineBorder);
 
+
+        top1.add(usuario);
+        top2.add(maquina);
         bottom1.add(piedra);
         bottom2.add(papel);
         bottom3.add(tijeras);
@@ -77,7 +91,6 @@ public class VistaGUI extends JFrame implements Vista{
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700,500);
-        setVisible(true);
         setTitle("ULTIMATE PIEDRA, PAPEL ,TIJERA");
         setResizable(false);
 
@@ -85,34 +98,47 @@ public class VistaGUI extends JFrame implements Vista{
 
     @Override
     public void mostrarOpcionUsuario(Opciones opcion) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarOpcionUsuario'");
+        if(opcion == Opciones.PIEDRA){
+            usuario.setIcon(piedraIcon);
+        }else if(opcion == Opciones.PAPEL){
+            usuario.setIcon(papelIcon);
+        }else if(opcion == Opciones.TIJERA){
+            usuario.setIcon(tijerasIcon);
+        }
     }
 
     @Override
-    public void mostrarOpcionMaquina(Opciones opcion) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarOpcionMaquina'");
+    public void mostrarOpcionMaquina(Opciones opcion) {        
+        if(opcion == Opciones.PIEDRA){
+            maquina.setIcon(piedraIcon);
+    }else if(opcion == Opciones.PAPEL){
+        maquina.setIcon(papelIcon);
+    }else if(opcion == Opciones.TIJERA){
+        maquina.setIcon(tijerasIcon);
+    }
     }
 
 
-    @Override
-    public void mostrarResultado(String resultado) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarResultado'");
-    }
+
 
 
     @Override
     public void mostrarPuntuacion(int puntosUsuario, int puntosMaquina) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarPuntuacion'");
+        JOptionPane.showMessageDialog(null, "Puntuación: Usuario: " + puntosUsuario + " - Máquina: " + puntosMaquina, "resultado", 1);
     }
 
     @Override
     public Opciones obtenerOpcionUsuario() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'obtenerOpcionUsuario'");
+        return opciongui;
+    }
+
+    @Override
+    public void mostrarVista(Controlador controlador) {
+        setVisible(true);
+        piedra.addMouseListener(controlador);  
+        papel.addMouseListener(controlador);
+        tijeras.addMouseListener(controlador);
+
     }
     
 }
