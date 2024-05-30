@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
+import Controlador.Controlador;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -113,6 +114,12 @@ public class VistaGUI extends JFrame implements Vista{
     public Opciones obtenerOpcionUsuario() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'obtenerOpcionUsuario'");
+    }
+
+    @Override
+    public void mostrarVista(Controlador controlador) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mostrarVista'");
     }
     
 }

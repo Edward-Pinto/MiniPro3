@@ -3,6 +3,7 @@ package Vista;
 import java.util.Scanner;
 
 import Modelo.Opciones;
+import Controlador.Controlador;
 
 public class VistaTerminal implements Vista {
     public Scanner scanner;
@@ -40,5 +41,11 @@ public class VistaTerminal implements Vista {
             System.out.println("Opción inválida, escribe la palabra");
             return obtenerOpcionUsuario();
         }
+    }
+
+    @Override
+    public void mostrarVista(Controlador controlador) {
+        System.out.println("Bienvenido: ");
+        controlador.actionPerformed(null);
     }
 }

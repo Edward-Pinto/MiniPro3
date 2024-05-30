@@ -1,10 +1,15 @@
 package Controlador;
 
+import javax.swing.Action;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import Modelo.Game;
 import Modelo.Opciones;
 import Vista.Vista;
 
-public class Controlador {
+public class Controlador implements ActionListener{
     private Game modelo;
     private Vista vista;
 
@@ -13,18 +18,31 @@ public class Controlador {
         this.vista = vista;
     }
 
-    public void jugar() {
-        Opciones opcionUsuario = vista.obtenerOpcionUsuario();
-        Opciones opcionMaquina = modelo.generarOpcionMaquina();
+    public void mostrarVista(){
+        vista.mostrarVista(this);
+    }
 
-        vista.mostrarOpcionUsuario(opcionUsuario);
-        vista.mostrarOpcionMaquina(opcionMaquina);
 
-        modelo.actualizarPuntuacion(opcionUsuario, opcionMaquina);
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
-        int puntosUsuario = modelo.getPuntosUsuario();
-        int puntosMaquina = modelo.getPuntosMaquina();
 
-        vista.mostrarPuntuacion(puntosUsuario, puntosMaquina);
+
+
+        if( e == null){
+            Opciones opcionUsuario = vista.obtenerOpcionUsuario();
+            Opciones opcionMaquina = modelo.generarOpcionMaquina();
+
+            vista.mostrarOpcionUsuario(opcionUsuario);
+            vista.mostrarOpcionMaquina(opcionMaquina);
+
+            modelo.actualizarPuntuacion(opcionUsuario, opcionMaquina);
+
+            int puntosUsuario = modelo.getPuntosUsuario();
+            int puntosMaquina = modelo.getPuntosMaquina();
+
+            vista.mostrarPuntuacion(puntosUsuario, puntosMaquina);
+        }
+        
     }
 }
