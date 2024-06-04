@@ -1,7 +1,7 @@
-package vista;
+package vista_;
 
-import modelo.Opciones;
-import controlador.Controlador;
+import controlador_.Controlador;
+import modelo_.Opciones;
 
 public interface Vista {
     void mostrarVista(Controlador controlador);
