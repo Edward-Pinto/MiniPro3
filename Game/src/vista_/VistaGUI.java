@@ -17,9 +17,9 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.Image;
-
+// VistaGUI, extiende JFrame e implementa la interfaz de Vista. Crea una GUI para el Piedra, Papel o Tijera.
 public class VistaGUI extends JFrame implements Vista{
-
+    //Contiene varios objetos JPanel, JLabel e Icon que se utilizan para crear los elementos visuales del juego.
     Container contenedor;
     GridLayout layoutPrincipal, layoutTop, layoutBottom;
     JPanel topPanel, bottomPanel, top1, top2, bottom1, bottom2, bottom3;
@@ -41,13 +41,11 @@ public class VistaGUI extends JFrame implements Vista{
     JLabel maquina = new JLabel();
 
     public VistaGUI(){
+        //Se organiza cada elemento visual para obtener la mejor estética posible.
         contenedor = getContentPane();
         layoutPrincipal = new GridLayout(2,1);
         contenedor.setLayout(layoutPrincipal);
         Border lineBorder = new LineBorder(Color.BLACK, 2);
-
-        
-        
 
         topPanel = new JPanel();
         layoutTop = new GridLayout(1,2);
@@ -55,7 +53,6 @@ public class VistaGUI extends JFrame implements Vista{
         bottomPanel = new JPanel();
         layoutBottom = new GridLayout(1,3);
         bottomPanel.setLayout(layoutBottom);
-
 
         top1 = new JPanel();
         top2 = new JPanel();
@@ -107,7 +104,8 @@ public class VistaGUI extends JFrame implements Vista{
         setLocationRelativeTo(null);
 
     }
-
+    //Métodos mostrarOpcionUsuario, mostrarOpcionMaquina y mostrarPuntuacion
+    //se utilizan para actualizar la GUI con la elección del usuario, de la máquina y la puntuación, respectivamente.
     @Override
     public void mostrarOpcionUsuario(Opciones opcion) {
         if(opcion == Opciones.PIEDRA){
@@ -130,20 +128,16 @@ public class VistaGUI extends JFrame implements Vista{
     }
     }
 
-
-
-
-
     @Override
     public void mostrarPuntuacion(int puntosUsuario, int puntosMaquina) {
         JOptionPane.showMessageDialog(contenedor, "Puntuación: Usuario: " + puntosUsuario + " - Máquina: " + puntosMaquina, "resultado", 1);
     }
-
+    //El método obtenerOpcionUsuario se usa para obtener la elección del usuario.
     @Override
     public Opciones obtenerOpcionUsuario() {
         return opciongui;
     }
-
+    //Método mostrarVista se usa para mostrar la GUI y agregar listeners del mouse a los objetos JLabel del juego.
     @Override
     public void mostrarVista(Controlador controlador) {
         setVisible(true);
